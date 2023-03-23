@@ -58,13 +58,20 @@ add.addEventListener("click",  function(){
         
         rb.addEventListener("click", function(){
             let ind = (rb.attributes[0].value).slice(-1)
-            let deleteables = document.getElementsByClassName(ind)
-            for(let j=0; j<deleteables.length; j++){
-                console.log("dele: ", deleteables[j])
-                deleteables[j].remove()
+            console.log(ind, "    ", GLOBAL_INDEX)
+            if(ind == GLOBAL_INDEX-1){
+                console.log("yep")
+                deleteLast()
+                return
             }
-        
-            console.log(deleteables)
+            else{
+                let deleteables = document.getElementsByClassName(ind)
+                for(let j=0; j<deleteables.length; j++){
+                    console.log("dele: ", deleteables[j])
+                    deleteables[j].remove()
+                }
+            }
+            // console.log(deleteables)
             rb.remove()
         })
     }
@@ -77,13 +84,13 @@ add.addEventListener("click",  function(){
 
 
 
-
-remove.addEventListener("click", function(){
+function deleteLast(){
     child = table.lastChild
     if(child){
         child.remove()
     }
-})
+}
+remove.addEventListener("click", deleteLast)
 
 border.addEventListener("click", function(){
     console.log('here')
