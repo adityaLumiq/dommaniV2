@@ -1,11 +1,13 @@
+const everything = document.getElementById("everything")
 const table = document.getElementById("table"); 
 const add = document.getElementById("add");
 const remove = document.getElementById("remove")
 const border = document.getElementById("border")
 const randomizer = document.getElementById("color")
 const disco = document.getElementById("disco")
+const error = document.getElementById("error")
 // console.log(add)
-const colorList = ["#bf616a", "#d08770", "#ebcb8b", "#a3be8c", "#b48ead"]
+const colorList = ["#155263", "#ff6f3c", "#ff9a3c", "#f76b8a", "#5585b5", "#680747", "#d59bf6", "#c4c1e0", "#42b883", "#347474" ,"#cbf078"]
 let TIMEOUT = false
 
 let GLOBAL_INDEX = -1
@@ -14,6 +16,9 @@ let rembuttons = []
 add.addEventListener("click",  function(){
     if(GLOBAL_INDEX >= 9){
         console.error("NOOOO")
+        error.classList.add("panic")
+        error.classList.remove("no-panic")
+        return
     }
     console.log("yo")
     let row = document.createElement("tr")
@@ -82,12 +87,10 @@ add.addEventListener("click",  function(){
 
 
 
-
-
-
-
-
 function deleteLast(){
+    GLOBAL_INDEX = Math.max(0, GLOBAL_INDEX-1);
+    error.classList.add("no-panic")
+    error.classList.remove("panic")
     child = table.lastChild
     if(child){
         child.remove()
@@ -137,14 +140,18 @@ function randomizeColor(){
 
 function recursiveToggle(){
     toggleBorder()
-    randomizeColor()
+    // randomizeColor()
 
 
     let timer
     if(TIMEOUT){
+        everything.classList.add("everything-disco");
         timer = setTimeout(recursiveToggle, 200)
     }
     else{
+        if(everything.classList.contains('everything-disco')){
+            everything.classList.remove('everything-disco')
+        }
         clearTimeout(timer)
     }
     
@@ -167,3 +174,12 @@ randomizer.addEventListener("click", randomizeColor)
 
 
 disco.addEventListener("click", discoFunc)
+
+
+
+
+let colors = ['red','yellow','blue','green','orange'];
+
+setInterval(() => {
+    document.body.style.setProperty('--bgColor', colors[0]);
+}, 1000);
