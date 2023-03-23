@@ -7,7 +7,14 @@ body {
     /* width: 400px; */
     background-color: #4c566a;
 }
-
+.avatar {
+    /* justify-content: center; */
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* border: 2px solid white; */
+}
 #everything {
     min-height: 700px;
     padding:10px;
@@ -93,6 +100,10 @@ td{
 }
 
 
+#backgr{
+    height: 100vh;
+}
+
 .disco-bg {
     /* width: 100%;
     display: flex;
@@ -100,24 +111,13 @@ td{
     justify-content: center; */
     height: 100vh;
     background-size: 1000% 1000%;
-    background-image: linear-gradient(-45deg, yellow 0%, yellow 25%, yellow 51%, #ff357f 100%);
-    -webkit-animation: AnimateBG 20s ease infinite;
-            animation: AnimateBG 20s ease infinite;
+    background-image: linear-gradient(-45deg, yellow 0%, #7FFF00 25%, #9400D3 51%, #ff357f 100%);
+    -webkit-animation: AnimateBG 2s ease infinite;
+            animation: AnimateBG 2s ease infinite;
   }
   
+
   @-webkit-keyframes AnimateBG {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  @keyframes AnimateBG {
     0% {
       background-position: 0% 50%;
     }
