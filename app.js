@@ -7,13 +7,10 @@ const randomizer = document.getElementById("color")
 const disco = document.getElementById("disco")
 const error = document.getElementById("error")
 const backgr = document.getElementById("backgr")
-const lorde = document.getElementById("lorde")
-const sanjay = document.getElementById("sanjay")
-const cancel = document.getElementById("cancel")
-// console.log(add)
+const heading = document.getElementById("heading")
 const colorList = ["#155263", "#ff6f3c", "#ff9a3c", "#f76b8a", "#5585b5", "#680747", "#d59bf6", "#c4c1e0", "#42b883", "#347474" ,"#cbf078"]
 
-
+heading.setAttribute('contenteditable', 'true')
 
 
 
@@ -26,24 +23,24 @@ let PROFILE = "cancel"
 
 
 
-lorde.addEventListener("click", function(){
-    PROFILE = "lorde"
-    BACKGROUND_IMG = "url(melodrama.jpg)";
-    // backgr.style.backgroundImage=BACKGROUND_IMG
-    MUSIC = new Audio('hd.wav');
-})
-sanjay.addEventListener("click", function(){
-    PROFILE = "sanjay"
-    MUSIC = new Audio('nahi.wav');
-    BACKGROUND_IMG = "url(no-nah.gif)";
-    // backgr.style.backgroundImage=BACKGROUND_IMG
-})
-cancel.addEventListener("click", function(){
-    PROFILE = "cancel"
-    BACKGROUND_IMG = "";
-    backgr.style.backgroundImage=BACKGROUND_IMG
-    MUSIC = new Audio('');
-})
+// lorde.addEventListener("click", function(){
+//     PROFILE = "lorde"
+//     BACKGROUND_IMG = "url(melodrama.jpg)";
+//     // backgr.style.backgroundImage=BACKGROUND_IMG
+//     MUSIC = new Audio('hd.wav');
+// })
+// sanjay.addEventListener("click", function(){
+//     PROFILE = "sanjay"
+//     MUSIC = new Audio('nahi.wav');
+//     BACKGROUND_IMG = "url(no-nah.gif)";
+//     // backgr.style.backgroundImage=BACKGROUND_IMG
+// })
+// cancel.addEventListener("click", function(){
+//     PROFILE = "cancel"
+//     BACKGROUND_IMG = "";
+//     backgr.style.backgroundImage=BACKGROUND_IMG
+//     MUSIC = new Audio('');
+// })
 
 function removeBG(){
     BACKGROUND_IMG = "";
@@ -56,20 +53,34 @@ add.addEventListener("click",  function(){
         error.classList.remove("no-panic")
         return
     }
-    MUSIC.play();
-    if(PROFILE === "lorde"){
-        BACKGROUND_IMG = "url(melodrama.jpg)";
-        backgr.style.backgroundImage=BACKGROUND_IMG
-        setTimeout(removeBG, 3000)
+    console.log(heading.innerText)
+    if(heading.innerText === "no"){
+        PROFILE = "sanjay"
     }
+    else if(heading.innerText === "yes"){
+        PROFILE = "lorde"
+    }
+    else{
+        PROFILE = "cancel"
+    }
+    console.log(PROFILE)
     if(PROFILE === "sanjay"){
         BACKGROUND_IMG = "url(no-nah.gif)";
         backgr.style.backgroundImage=BACKGROUND_IMG
         setTimeout(removeBG, 2000)
+        child = table.lastChild
+        MUSIC = new Audio('nahi.wav');
+        MUSIC.play();
         return
     }
+    else if(PROFILE === "lorde"){
+        // BACKGROUND_IMG = ""
+        // backgr.style.backgroundImage=BACKGROUND_IMG
+        MUSIC = new Audio('hd.wav');
+        MUSIC.play();
+    }
     backgr.style.backgroundImage=BACKGROUND_IMG
-    console.log("yo")
+    // console.log("yo")
     let row = document.createElement("tr")
     let data1 = document.createElement("td")
     data1.setAttribute('contenteditable', 'true') 
@@ -137,7 +148,6 @@ add.addEventListener("click",  function(){
 
 
 function deleteLast(){
-    backgr.style.backgroundImage="";
     GLOBAL_INDEX = Math.max(0, GLOBAL_INDEX-1);
     error.classList.add("no-panic")
     error.classList.remove("panic")
