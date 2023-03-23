@@ -5,13 +5,16 @@ const border = document.getElementById("border")
 const randomizer = document.getElementById("color")
 const disco = document.getElementById("disco")
 // console.log(add)
+const colorList = ["#bf616a", "#d08770", "#ebcb8b", "#a3be8c", "#b48ead"]
+let TIMEOUT = false
 
-
-
-let GLOBAL_INDEX = 1
+let GLOBAL_INDEX = -1
 let rembuttons = []
 
 add.addEventListener("click",  function(){
+    if(GLOBAL_INDEX >= 9){
+        console.error("NOOOO")
+    }
     console.log("yo")
     let row = document.createElement("tr")
     let data1 = document.createElement("td")
@@ -90,10 +93,10 @@ function deleteLast(){
         child.remove()
     }
 }
-remove.addEventListener("click", deleteLast)
 
-border.addEventListener("click", function(){
-    console.log('here')
+
+function toggleBorder(){
+    // console.log('here')
     data = document.querySelectorAll("td")
 
     for(i=0; i<data.length;  i++){
@@ -104,17 +107,63 @@ border.addEventListener("click", function(){
             data[i].classList.add('td-border')
         }
     }
-})
+}
 
-colorList = ["#bf616a", "#d08770", "#ebcb8b", "#a3be8c", "#b48ead"]
+function alternateBorder(){
+    data = document.querySelectorAll("td")
 
-randomizer.addEventListener("click", function(){
+    for(i=0; i<data.length;  i++){
+        if(i%2===0){
+            if(data[i].classList.contains('td-border')){
+                console.log('hura')
+                data[i].classList.remove('td-border')
+            }
+        }
+        else{
+            data[i].classList.add('td-border')
+        }
+    }
+}
+
+
+function randomizeColor(){
     data = document.querySelectorAll("td")
     ind = Math.floor(Math.random() * 6)
     for(i=0; i<data.length;  i++){
         data[i].style.backgroundColor = colorList[ind]
     }
-})
+}
+
+
+function recursiveToggle(){
+    toggleBorder()
+    randomizeColor()
+
+
+    let timer
+    if(TIMEOUT){
+        timer = setTimeout(recursiveToggle, 200)
+    }
+    else{
+        clearTimeout(timer)
+    }
+    
+}
+function discoFunc(){
+    alternateBorder()
+    TIMEOUT = !TIMEOUT
+    recursiveToggle()
+    
+}
+remove.addEventListener("click", deleteLast)
+
+border.addEventListener("click", toggleBorder)
 
 
 
+randomizer.addEventListener("click", randomizeColor)
+
+
+
+
+disco.addEventListener("click", discoFunc)
