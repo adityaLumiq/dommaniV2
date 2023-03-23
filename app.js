@@ -6,6 +6,7 @@ const border = document.getElementById("border")
 const randomizer = document.getElementById("color")
 const disco = document.getElementById("disco")
 const error = document.getElementById("error")
+const backgr = document.getElementById("backgr")
 // console.log(add)
 const colorList = ["#155263", "#ff6f3c", "#ff9a3c", "#f76b8a", "#5585b5", "#680747", "#d59bf6", "#c4c1e0", "#42b883", "#347474" ,"#cbf078"]
 let TIMEOUT = false
@@ -140,18 +141,20 @@ function randomizeColor(){
 
 function recursiveToggle(){
     toggleBorder()
-    // randomizeColor()
+    randomizeColor()
 
 
     let timer
     if(TIMEOUT){
         everything.classList.add("everything-disco");
+        backgr.classList.add("disco-bg")
         timer = setTimeout(recursiveToggle, 200)
     }
     else{
         if(everything.classList.contains('everything-disco')){
             everything.classList.remove('everything-disco')
         }
+        backgr.classList.remove("disco-bg")
         clearTimeout(timer)
     }
     
