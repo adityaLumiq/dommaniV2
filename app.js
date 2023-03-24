@@ -157,19 +157,20 @@ function deleteLast(){
     }
 }
 
-
+let BORDER = false
 function toggleBorder(){
     // console.log('here')
     data = document.querySelectorAll("td")
 
     for(i=0; i<data.length;  i++){
-        if(data[i].classList.contains('td-border')){
+        if(BORDER){
             data[i].classList.remove('td-border')
         }
         else{
             data[i].classList.add('td-border')
         }
     }
+    BORDER = !BORDER
 }
 
 function alternateBorder(){
