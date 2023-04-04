@@ -31,6 +31,6 @@
    - '--shielded-vtpm'
    - '--shielded-integrity-monitoring'
    - '--labels=ec-src=vm_add-gcloud,container-vm=cos-stable-105-17412-1-55'
-   - '--allow-unauthenticated'
+   
 images:
  - 'us-central1-docker.pkg.dev/$PROJECT_ID/run1:$COMMIT_SHA'
