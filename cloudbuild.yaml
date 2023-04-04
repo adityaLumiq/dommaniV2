@@ -8,13 +8,6 @@
  # Deploy container image to Cloud Run
  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
    entrypoint: gcloud
-   args:
-   - 'run'
-   - 'deploy'
-   - 'run1'
-   - '--image'
-   - 'us-central1-docker.pkg.dev/$PROJECT_ID/run1:$COMMIT_SHA'
-   - '--region'
-   - 'us-central1'
- images:
+   args: ['run', 'deploy',  'run1',  '--image',  'us-central1-docker.pkg.dev/$PROJECT_ID/run1:$COMMIT_SHA',  '--region',  'us-central1']
+images:
  - 'us-central1-docker.pkg.dev/$PROJECT_ID/run1:$COMMIT_SHA'
