@@ -25,7 +25,7 @@
    - '--boot-disk-size=10GB'
    - '--boot-disk-type=pd-balanced'
    - '--boot-disk-device-name=wb-2'
-   - '--container-image=us-central1-docker.pkg.dev/solid-garden-380911/cloud-run-source-deploy/dommaniv2/dommaniv2:4c69f1487688a9513589dc92feaf4e957e41e742'
+   - '--container-image=us-central1-docker.pkg.dev/$PROJECT_ID/run1:$COMMIT_SHA'
    - '--container-restart-policy=always'
    - '--no-shielded-secure-boot'
    - '--shielded-vtpm'
