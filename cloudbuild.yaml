@@ -7,6 +7,6 @@
    args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA']
  # Deploy container image to VM
  - name: 'gcr.io/cloud-builders/gcloud'
-   args: ['compute', 'instances', 'update-container', 'wb-3', '--zone', 'asia-south1-c', '--container-image=us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA']
+   args: ['compute', 'instances', 'update-container', 'wb-3', '--zone', 'asia-south1-c', '--container-image=us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA', '--container-arg=-p 8080:80']
 images:
  - 'us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA'
