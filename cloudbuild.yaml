@@ -7,6 +7,6 @@
    args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA']
  # Deploy container image to Cloud Run
  - name: 'gcr.io/cloud-builders/gcloud'
- - args: ['compute' 'ssh' '--zone' '"asia-south1-c"' '"wb-2"' '--project' '"solid-garden-380911"']
+ - args: ['compute' 'ssh' '--zone' 'asia-south1-c' 'wb-2' '--project' 'solid-garden-380911']
 images:
  - 'us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA'
