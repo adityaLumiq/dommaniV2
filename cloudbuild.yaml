@@ -1,12 +1,12 @@
  steps:
  # Build the container image
  - name: 'gcr.io/cloud-builders/docker'
-   args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/dommani:$COMMIT_SHA', '.']
+   args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA', '.']
  # Push the container image to Container Registry
  - name: 'gcr.io/cloud-builders/docker'
-   args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/dommani:$COMMIT_SHA']
+   args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA']
  # Deploy container image to Cloud Run
  - name: 'gcr.io/cloud-builders/gcloud'
-   args: ['run', 'deploy',  'run1',  '--image',  'us-central1-docker.pkg.dev/$PROJECT_ID/dommani:$COMMIT_SHA',  '--region',  'asia-south1', '--port', '80', '--allow-unauthenticated']
+   args: ['run', 'deploy',  'Dommani',  '--image',  'us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA',  '--region',  'asia-south1', '--port', '80', '--allow-unauthenticated']
 images:
- - 'us-central1-docker.pkg.dev/$PROJECT_ID/dommani:$COMMIT_SHA'
+ - 'us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA'
