@@ -2,11 +2,11 @@
  # Build the container image
  - name: 'gcr.io/cloud-builders/docker'
    args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA', '.']
- # Push the container image to Container Registry
+ # Push the container image to Artifact Registry
  - name: 'gcr.io/cloud-builders/docker'
    args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA']
- # Deploy container image to Cloud Run
+ # Deploy container image to VM
  - name: 'gcr.io/cloud-builders/gcloud'
-   args: ['run', 'deploy',  'run1',  '--image',  'us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA',  '--region',  'us-central1', '--allow-unauthenticated']
+   args: ['compute', 'instances', 'update-container', 'nginx-vm1', '--zone=asia-south1-c', '--container-image=us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA']
 images:
  - 'us-central1-docker.pkg.dev/$PROJECT_ID/run1/dommani:$COMMIT_SHA'
