@@ -2,7 +2,7 @@
 - name: Docker-Playbook
   hosts: 127.0.0.1
   become: true
-  become_method: sudo
+  # become_method: sudo
   connection: local
   tasks:
     - name: Install aptitude
