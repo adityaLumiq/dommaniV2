@@ -1,7 +1,7 @@
 ---
 - name: Docker-Playbook
   hosts: 127.0.0.1
-  # become: true
+  become: true
   # become_method: sudo
   connection: local
   tasks:
@@ -27,6 +27,3 @@
         state: latest
         update_cache: true
 
-    - name: Install Docker Module for Python
-      pip:
-        name: docker
