@@ -26,4 +26,6 @@
         name: docker-ce
         state: latest
         update_cache: true
+    - name: Start and enable docker
+      shell: sudo systemctl start docker && sudo systemctl enable docker
 
