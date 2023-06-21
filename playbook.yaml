@@ -1,6 +1,7 @@
 ---
 - name: Docker-Playbook
 - hosts: localhost
+  connection: local
   tasks:
   - name: Install docker.
     package:
